@@ -2,7 +2,12 @@
 	<view class="content">
 		<u-swiper
 				:list="list1"
-				
+				height="375rpx"
+				 
+				                circular
+				                :autoplay="false"
+				                radius="5"
+				                bgColor="#ccc"
 		></u-swiper>
 		5
 	</view>
