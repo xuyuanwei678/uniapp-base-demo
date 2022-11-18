@@ -1,7 +1,7 @@
 const CONFIG = {
     // 开发环境配置
     development: {
-        Api_url:"/apo"
+        Api_url:"/api"
     },
     // 生产环境配置
     production: {
