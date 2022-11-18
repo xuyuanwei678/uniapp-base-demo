@@ -1,84 +1,64 @@
 <template>
-	<view class="content">
-		<u-swiper
-				:list="list1"
-				height="375rpx"
-				 
-				                circular
-				                :autoplay="false"
-				                radius="5"
-				                bgColor="#ccc"
-		></u-swiper>
-		5
+	<view class="drag">
+		<!-- controlsList 表示控件的列表  controlsSize 表示每个控件的大小 -->
+		<drag-and-drop-sort :controlsList="dataArray" :controlsSize="{width: 100, height: 100}">
+			<!-- 自定义内容 -->
+			<template #content="{item}">
+				<view :style="{'background': item.color}" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
+					{{item.label}}
+				</view>
+			</template>
+		</drag-and-drop-sort>
 	</view>
 </template>
-
+ 
 <script>
-	import {API_TEST_GET,API_TEST_POST} from '@/http/request/request.js'
-	export default {
-		data() {
-			return {
-				title: 'Hello',
-				show: false,
-				list1: [
-					'https://cdn.uviewui.com/uview/swiper/swiper3.png',
-					'https://cdn.uviewui.com/uview/swiper/swiper2.png',
-					'https://cdn.uviewui.com/uview/swiper/swiper1.png',
-				]
-			}
-		},
-		onLoad() {
-			// console.log(this.vuex_version)
-			// this.$u.vuex('vuex_version','1.0.55555')
-			// console.log(this.vuex_version)
-			// this.get_test()
-			 //this.post_test()
-			
-			
-		},
-		methods: {
-			get_test(){
-				let data = {
-					test:666
-				}
-				API_TEST_GET(data).then(res=>{
-					
-				})
-			},
-				
-			post_test(){
-				let data = {
-					test:555,
-					id: 789,
-					name: 'admin'
-				}
-				API_TEST_POST(data).then(res=>{
-					
-				})
-			}
+import dragAndDropSort from '@/components/drag.vue';
+export default {
+	components: {
+		dragAndDropSort,
+	},
+	data() {
+	    return {
+	        // 这个内容可以自定义,应该有一个disabled,为空时静止拖拽
+			dataArray: [
+				{color: '#ee3131', label: '1'},
+				{color: '#2dc3d5', label: '2'},
+				{color: '#f5aa41', label: '3'},
+				{color: '#42b983', label: '4'},
+				{color: '#1983fb', label: '5'},
+				{color: '#a15afd', label: '6'},
+				{color: '#ffe874', label: '7'},
+				{color: '#00a8fb', label: '8'},
+				{color: '#f36586', label: '9'},
+				{color: '#16d46b', label: '10'},
+				{color: '#ee3131', label: '1'},
+				{color: '#2dc3d5', label: '2'},
+				{color: '#f5aa41', label: '3'},
+				{color: '#42b983', label: '4'},
+				{color: '#1983fb', label: '5'},
+				{color: '#a15afd', label: '6'},
+				{color: '#ffe874', label: '7'},
+				{color: '#00a8fb', label: '8'},
+				{color: '#f36586', label: '9'},
+				{color: '#16d46b', label: '10'},
+				{color: '#ee3131', label: '1'},
+				{color: '#2dc3d5', label: '2'},
+				{color: '#f5aa41', label: '3'},
+				{color: '#42b983', label: '4'},
+				{color: '#1983fb', label: '5'},
+				{color: '#a15afd', label: '6'},
+				{color: '#ffe874', label: '7'},
+				{color: '#00a8fb', label: '8'},
+				{color: '#f36586', label: '9'},
+				{color: '#16d46b', label: '10'},
+			],
 		}
-	}
+	},
+};
 </script>
-
-<style>
-	
-
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin-top: 200rpx;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 50rpx;
-	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
+<style lang="scss" scoped>
+	.drag{
+		
 	}
 </style>
