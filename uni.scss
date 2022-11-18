@@ -79,3 +79,34 @@ $uni-font-size-subtitle:26px;
 $uni-color-paragraph: #3F536E; // 文章段落颜色
 $uni-font-size-paragraph:15px;
 
+@mixin bg-image($url) {
+  background-image: url($url + ".png");
+  background-repeat: no-repeat;
+  background-size:cover;
+  @media (-webkit-min-device-pixel-ratio:2),(min-device-pixel-ratio:2){
+	background-image: url($url + "@2x.png");
+	background-repeat: no-repeat;
+	background-size:cover;
+  }
+}
+@mixin text-limit-line-1(){
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	word-break: break-all;
+}
+@mixin text-limit-line-2(){
+	text-overflow: -o-ellipsis-lastline;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+//flex布局垂直水平居中
+@mixin box-center-parallel-and-column {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
